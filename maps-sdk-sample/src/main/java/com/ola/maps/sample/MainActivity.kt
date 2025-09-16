@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity(), MapStatusCallback, NavigationStatusCal
             olaMapsConfig = OlaMapsConfig.Builder()
                 .setApplicationContext(applicationContext) //pass the application context here, it is mandatory
                 .setMapBaseUrl("https://api.olamaps.io") // pass the Base URL of Ola-Maps here (Stage/Prod URL), it is mandatory
-                .setApiKey("5HxGRd0NRDA3Q7Uil7bcZe3iKPAR4y9qos1MOYe3")
+                .setApiKey("<API KEY>")
                 .setProjectId("<Orgination-ID>") //Pass the Origination ID here, it is mandatory
                 .setMapTileStyle(MapTileStyle.DEFAULT_LIGHT_STANDARD) //pass the MapTileStyle here, it is Optional.
                 .setMinZoomLevel(3.0)

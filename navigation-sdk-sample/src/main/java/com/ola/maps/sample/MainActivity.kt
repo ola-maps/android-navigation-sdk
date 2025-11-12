@@ -46,7 +46,6 @@ import java.io.IOException
 import java.io.InputStream
 import java.nio.charset.Charset
 
-
 class MainActivity : AppCompatActivity(), MapStatusCallback, NavigationStatusCallback,
     RouteProgressListener, OnLocationStaleListener, OnOlaMapLocationUpdateCallback {
     private var olaMapView: OlaMapView? = null

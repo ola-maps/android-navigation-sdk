@@ -163,6 +163,18 @@ class MainActivity : AppCompatActivity(), MapStatusCallback, NavigationStatusCal
                 }
             }
 
+            imgZoomIn.setOnClickListener {
+                olaMapView.cancelAllVelocityAnimations()
+                olaMapView.getMapCameraPositionZoomLevel()?.let { zoom ->
+                    var zoomLevel = zoom
+                    if (zoomLevel != null && zoomLevel < 25.0) {
+                        zoomLevel += 1
+                    }
+
+                    olaMapView.zoomCamera(zoomLevel)
+                }
+            }
+
             imgZoomOut.setOnClickListener {
                 olaMapView.cancelAllVelocityAnimations()
                 olaMapView.getMapCameraPositionZoomLevel()?.let { zoom ->

@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/Theme.AppCompat.Light.NoActionBar" />
+        app:popupTheme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:visibility="gone"/>
 
     <com.ola.maps.navigation.v5.navigation.OlaMapView
         android:id="@+id/ola_map_view"

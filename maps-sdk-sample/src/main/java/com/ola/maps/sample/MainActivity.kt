@@ -13,11 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.gson.Gson
-import com.mapbox.api.directions.v5.DirectionsCriteria
-import com.mapbox.api.directions.v5.models.DirectionsRoute
-import com.mapbox.mapboxsdk.Mapbox
-import com.mapbox.mapboxsdk.geometry.LatLng
-import com.mapbox.mapboxsdk.location.OnLocationStaleListener
 import com.ola.maps.mapslibrary.interfaces.OnOlaMapLocationUpdateCallback
 import com.ola.maps.mapslibrary.manager.InfoWindowsAnchor
 import com.ola.maps.mapslibrary.models.OlaLatLng
@@ -30,7 +25,9 @@ import com.ola.maps.navigation.ui.v5.NavigationStatusCallback
 import com.ola.maps.navigation.ui.v5.NavigationViewOptions
 import com.ola.maps.navigation.ui.v5.instruction.InstructionModel
 import com.ola.maps.navigation.ui.v5.listeners.RouteProgressListener
+import com.ola.maps.navigation.v5.DirectionsCriteria
 import com.ola.maps.navigation.v5.MapStateChangeCallback
+import com.ola.maps.navigation.v5.model.DirectionsRoute
 import com.ola.maps.navigation.v5.model.route.NavigationErrorInfo
 import com.ola.maps.navigation.v5.model.route.RouteInfoData
 import com.ola.maps.navigation.v5.navigation.MapboxNavigationOptions
@@ -38,10 +35,13 @@ import com.ola.maps.navigation.v5.navigation.NavigationConstants
 import com.ola.maps.navigation.v5.navigation.OlaMapView
 import com.ola.maps.navigation.v5.navigation.direction.transform
 import com.ola.maps.sample.databinding.ActivityMainBinding
-import com.olaelectric.navigation.utils.handleVisibility
-import com.olaelectric.navigation.utils.hide
-import com.olaelectric.navigation.utils.show
-import com.olaelectric.navigation.utils.showToast
+import com.ola.maps.sample.extensions.handleVisibility
+import com.ola.maps.sample.extensions.hide
+import com.ola.maps.sample.extensions.show
+import com.ola.maps.sample.extensions.showToast
+import org.maplibre.android.MapLibre
+import org.maplibre.android.geometry.LatLng
+import org.maplibre.android.location.OnLocationStaleListener
 import java.io.IOException
 import java.io.InputStream
 import java.nio.charset.Charset
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity(), MapStatusCallback, NavigationStatusCal
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Mapbox.getInstance(this)
+        MapLibre.getInstance(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
@@ -100,10 +100,9 @@ class MainActivity : AppCompatActivity(), MapStatusCallback, NavigationStatusCal
     private fun initializeOlaMaps() {
         olaMapView?.initialize(
             mapStatusCallback = this,
-            olaMapsConfig = OlaMapsConfig.Builder()
-                .setApplicationContext(applicationContext) //pass the application context here, it is mandatory
+            olaMapsConfig = OlaMapsConfig.Builder(applicationContext) //pass the application context here, it is mandatory
                 .setMapBaseUrl("https://api.olamaps.io") // pass the Base URL of Ola-Maps here (Stage/Prod URL), it is mandatory
-                .setApiKey("5HxGRd0NRDA3Q7Uil7bcZe3iKPAR4y9qos1MOYe3")
+                .setApiKey("<API_KEY>")
                 .setProjectId("<Orgination-ID>") //Pass the Origination ID here, it is mandatory
                 .setMapTileStyle(MapTileStyle.DEFAULT_LIGHT_STANDARD) //pass the MapTileStyle here, it is Optional.
                 .setMinZoomLevel(3.0)
@@ -389,10 +388,6 @@ class MainActivity : AppCompatActivity(), MapStatusCallback, NavigationStatusCal
     }
 
     override fun onNavigationInitError(navigationErrorInfo: NavigationErrorInfo?) {
-
-    }
-
-    override fun onUpdatedWaypoints(location: List<OlaLatLng?>?) {
 
     }
 

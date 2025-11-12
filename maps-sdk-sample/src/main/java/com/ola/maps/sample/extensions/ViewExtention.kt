@@ -1,11 +1,11 @@
-package com.olaelectric.navigation.utils
+package com.ola.maps.sample.extensions
 
 import android.content.Context
 import android.location.Location
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
-import com.mapbox.geojson.Point
+import org.maplibre.geojson.Point
 
 
 /*

@@ -1,0 +1,62 @@
+plugins {
+    alias libs.plugins.android.application
+    alias libs.plugins.kotlin.android
+    alias libs.plugins.kapt
+}
+
+android {
+    namespace 'com.ola.maps.sample'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.ola.maps.sample"
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName "1.0.217"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+}
+
+dependencies {
+    implementation(files("libs/maps-navigation-sdk-1.0.217.aar"))
+    implementation libs.logging.interceptor
+
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material.design
+    implementation libs.constraintlayout
+
+    //Ola Maps Navigation SDK
+    implementation(libs.moe.android.sdk)
+    implementation libs.maplibre.sdk
+    implementation libs.maplibre.directions
+    implementation libs.maplibre.services
+    implementation libs.maplibre.markerview
+    implementation libs.maplibre.annotation
+    implementation libs.maplibre.turf
+
+    // Architecture libraries
+    implementation libs.lifecycle.extensn
+    annotationProcessor libs.lifecycle.compiler
+}

@@ -39,24 +39,23 @@ android {
 }
 
 dependencies {
-    implementation(files("libs/maps-navigation-sdk-1.0.217.aar"))
-    implementation libs.logging.interceptor
+    //OlaMap SDK
+    implementation(files("libs/OlaMapNavigationSDK-1.0.217.aar"))
 
-    implementation libs.androidx.core.ktx
-    implementation libs.androidx.appcompat
-    implementation libs.material.design
-    implementation libs.constraintlayout
+    //Required for OlaMap SDK
+    implementation "org.maplibre.gl:android-sdk:11.13.1"
+    implementation "org.maplibre.gl:android-sdk-directions-models:5.9.0"
+    implementation "org.maplibre.gl:android-sdk-services:5.9.0"
+    implementation "org.maplibre.gl:android-sdk-turf:5.9.0"
+    implementation "org.maplibre.gl:android-plugin-markerview-v9:3.0.2"
+    implementation "org.maplibre.gl:android-plugin-annotation-v9:3.0.2"
+    implementation "com.moengage:moe-android-sdk:14.02.02"
 
-    //Ola Maps Navigation SDK
-    implementation(libs.moe.android.sdk)
-    implementation libs.maplibre.sdk
-    implementation libs.maplibre.directions
-    implementation libs.maplibre.services
-    implementation libs.maplibre.markerview
-    implementation libs.maplibre.annotation
-    implementation libs.maplibre.turf
-
-    // Architecture libraries
-    implementation libs.lifecycle.extensn
-    annotationProcessor libs.lifecycle.compiler
+    // Used in sample app
+    implementation "androidx.core:core-ktx:1.10.1"
+    implementation "androidx.appcompat:appcompat:1.5.1"
+    implementation "com.google.android.material:material:1.7.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.0.0"
 }
